@@ -10,6 +10,8 @@ using Test
     @test data.lb == typemin(Int64)
     @test data.ub == typemax(Int64)
     @test_nowarn println(data)
+    @test_nowarn println(data.agents[1])
+    @test_nowarn println(data.jobs[1])
 end
 
 @testset "ErrorSymbol" begin
