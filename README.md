@@ -25,9 +25,9 @@ Type `GAPAgent` is defined as follows:
 
 ```julia
 struct GAPAgent
-    id::Int64                  # Sequential agent ID
-    capacity::Int64            # Agent capacity
-    costs::Vector{Int64}       # List of jobs costs for this agent
+    id         ::Int64         # Sequential agent ID
+    capacity   ::Int64         # Agent capacity
+    costs      ::Vector{Int64} # List of jobs costs for this agent
     consumption::Vector{Int64} # List of jobs consumptions for this agent
 end
 ```
@@ -36,8 +36,8 @@ Type `GAPJob` is defined as follows:
 
 ```julia
 struct GAPJob
-    id::Int64                  # Sequential job ID
-    costs::Vector{Int64}       # List of agents costs for this job
+    id         ::Int64         # Sequential job ID
+    costs      ::Vector{Int64} # List of agents costs for this job
     consumption::Vector{Int64} # List of agents consumptions for this job
 end
 ```
