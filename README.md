@@ -72,7 +72,7 @@ Open Julia's interactive session (REPL) and type:
 - [Mutsunori Yagiura's GAP Page](http://www.al.cm.is.nagoya-u.ac.jp/~yagiura/gap/)
 - [ORLib's GAP page](http://people.brunel.ac.uk/~mastjjb/jeb/orlib/gapinfo.html)
 
-## Other packages:
+## Other packages
 
 - [KnapsackLib.jl](https://github.com/rafaelmartinelli/KnapsackLib.jl): Knapsack algorithms in Julia
 - [BPPLib.jl](https://github.com/rafaelmartinelli/BPPLib.jl): Bin Packing and Cutting Stock Lib

@@ -1,6 +1,15 @@
 function loadGAP(instance::Symbol)
-    file_name = joinpath(data_path, string(instance))
-    return loadGAP(file_name)
+    file_name = joinpath(data_path, string(instance) * ".zip")
+    if !isfile(file_name)
+        println("File $(string(instance)) not found!")
+        return nothing
+    end
+
+    name = splitext(basename(file_name))[1]
+    file = ZipFile.Reader(file_name)
+    values = parse.(Int64, split(read(file.files[1], String)))
+
+    return load(values, name)
 end
 
 function loadGAP(file_name::String)
@@ -12,6 +21,10 @@ function loadGAP(file_name::String)
     name = splitext(basename(file_name))[1]
     values = parse.(Int64, split(read(file_name, String)))
 
+    return load(values, name)
+end
+
+function load(values::Array{Int64}, name::String)
     m = values[1]
     n = values[2]
 
