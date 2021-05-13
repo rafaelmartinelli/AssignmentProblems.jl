@@ -4,7 +4,7 @@ CurrentModule = GAPLib
 
 # GAPLib
 
-Documentation for [GAPLib](https://github.com/rafaelmartinelli/GAPLib.jl).
+Documentation for [GAPLib.jl](https://github.com/rafaelmartinelli/GAPLib.jl).
 
 ```@index
 ```
