@@ -1,14 +1,14 @@
 ```@meta
-CurrentModule = GAPLib
+CurrentModule = AssignmentProblems
 ```
 
-# GAPLib
+# AssignmentProblems
 
-Documentation for [GAPLib.jl](https://github.com/rafaelmartinelli/GAPLib.jl).
+Documentation for [AssignmentProblems.jl](https://github.com/rafaelmartinelli/AssignmentProblems.jl).
 
 ```@index
 ```
 
 ```@autodocs
-Modules = [GAPLib]
+Modules = [AssignmentProblems]
 ```

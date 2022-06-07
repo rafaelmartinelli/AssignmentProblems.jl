@@ -1,16 +1,16 @@
-using GAPLib
+using AssignmentProblems
 using Documenter
 
-DocMeta.setdocmeta!(GAPLib, :DocTestSetup, :(using GAPLib); recursive=true)
+DocMeta.setdocmeta!(AssignmentProblems, :DocTestSetup, :(using AssignmentProblems); recursive=true)
 
 makedocs(;
-    modules=[GAPLib],
+    modules=[AssignmentProblems],
     authors="Rafael Martinelli",
-    repo="https://github.com/rafaelmartinelli/GAPLib.jl/blob/{commit}{path}#{line}",
-    sitename="GAPLib.jl",
+    repo="https://github.com/rafaelmartinelli/AssignmentProblems.jl/blob/{commit}{path}#{line}",
+    sitename="AssignmentProblems.jl",
     format=Documenter.HTML(;
         prettyurls=get(ENV, "CI", "false") == "true",
-        canonical="https://rafaelmartinelli.github.io/GAPLib.jl",
+        canonical="https://rafaelmartinelli.github.io/AssignmentProblems.jl",
         assets=String[],
     ),
     pages=[
@@ -19,5 +19,5 @@ makedocs(;
 )
 
 deploydocs(;
-    repo="github.com/rafaelmartinelli/GAPLib.jl",
+    repo="github.com/rafaelmartinelli/AssignmentProblems.jl",
 )
