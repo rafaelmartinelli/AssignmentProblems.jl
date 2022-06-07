@@ -1,4 +1,4 @@
-function loadGAP(instance::Symbol)
+function loadAssignmentProblem(instance::Symbol)
     file_name = joinpath(data_path, string(instance) * ".zip")
     if !isfile(file_name)
         println("File $(string(instance)) not found!")
@@ -8,11 +8,12 @@ function loadGAP(instance::Symbol)
     name = splitext(basename(file_name))[1]
     file = ZipFile.Reader(file_name)
     values = parse.(Int64, split(read(file.files[1], String)))
+    close(file)
 
     return load(values, name)
 end
 
-function loadGAP(file_name::String)
+function loadAssignmentProblem(file_name::String)
     if !isfile(file_name)
         println("File $file_name not found!")
         return nothing
@@ -25,27 +26,27 @@ function loadGAP(file_name::String)
 end
 
 function load(values::Array{Int64}, name::String)
-    m = values[1]
-    n = values[2]
+    n_agents = values[1]
+    n_jobs = values[2]
+
+    agents = collect(1:n_agents)
+    jobs = collect(1:n_jobs)
 
     counter = 3
 
-    costs = zeros(Int64, n, m)
-    for j in 1:m
-        costs[:, j] = values[counter:counter + n - 1]
-        counter += n
+    costs = zeros(Int64, n_agents, n_jobs)
+    for i in 1:n_agents
+        costs[i, :] = values[counter:counter + n_jobs - 1]
+        counter += n_jobs
     end
 
-    consumptions = zeros(Int64, n, m)
-    for j in 1:m
-        consumptions[:, j] = values[counter:counter + n - 1]
-        counter += n
+    consumptions = zeros(Int64, n_agents, n_jobs)
+    for i in 1:n_agents
+        consumptions[i, :] = values[counter:counter + n_jobs - 1]
+        counter += n_jobs
     end
 
-    capacities = values[counter:counter + m - 1]
+    capacities = values[counter:counter + n_agents - 1]
 
-    agents = [ GAPAgent(j, capacities[j], costs[:, j], consumptions[:, j]) for j in 1:m ]
-    jobs = [ GAPJob(i, costs[i, :], consumptions[i, :]) for i in 1:n ]
-
-    return GAPData(name, agents, jobs, typemin(Int64), typemax(Int64))
+    return AssignmentProblem(name, agents, jobs, capacities, costs, consumptions, typemin(Int64), typemax(Int64))
 end
