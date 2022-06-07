@@ -1,5 +1,7 @@
 # AssignmentProblems.jl
 
+[![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://rafaelmartinelli.github.io/AssignmentProblems.jl/stable)
+[![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://rafaelmartinelli.github.io/AssignmentProblems.jl/dev)
 [![Build Status](https://github.com/rafaelmartinelli/AssignmentProblems.jl/workflows/CI/badge.svg)](https://github.com/rafaelmartinelli/AssignmentProblems.jl/actions)
 [![Coverage](https://codecov.io/gh/rafaelmartinelli/AssignmentProblems.jl/branch/main/graph/badge.svg)](https://codecov.io/gh/rafaelmartinelli/AssignmentProblems.jl)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -11,15 +13,6 @@ AssignmentProblems reads data files in `gap` format for Generalized Assignmnent 
 The main type used by the package is `AssignmentProblem`, defined as follows:
 
 ```julia
-struct AssignmentProblem
-    name   ::String           # Instance name
-    agents ::Vector{GAPAgent} # Vector of Agents
-    jobs   ::Vector{GAPJob}   # Vector of Jobs
-
-    lb     ::Int64            # Lower bound (typemin(Int64) if not known)
-    ub     ::Int64            # Upper bound (typemax(Int64) if not known)
-end
-
 struct AssignmentProblem
     name::String                # Instance name
 
