@@ -32,3 +32,10 @@ end
     data = loadAssignmentProblem("notaninstance")
     @test data === nothing
 end
+
+@testset "TestBounds" begin
+    data = loadAssignmentProblem(:c1060_5)
+    @test data.name == "c1060_5"
+    @test data.lb == 1446
+    @test data.ub == 1446
+end

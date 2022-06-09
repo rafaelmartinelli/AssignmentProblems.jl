@@ -48,5 +48,5 @@ function load(values::Array{Int64}, name::String)
 
     capacities = values[counter:counter + n_agents - 1]
 
-    return AssignmentProblem(name, agents, jobs, capacities, costs, consumptions, typemin(Int64), typemax(Int64))
+    return AssignmentProblem(name, agents, jobs, capacities, costs, consumptions, loadBounds(name)...)
 end
