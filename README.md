@@ -16,9 +16,6 @@ The main type used by the package is `AssignmentProblem`, defined as follows:
 struct AssignmentProblem
     name::String                # Instance name
 
-    agents::Vector{Int64}       # Vector of agents (sequential)
-    jobs::Vector{Int64}         # Vector of jobs (sequential)
-
     capacities::Vector{Int64}   # Agents' capacities
     costs::Matrix{Int64}        # Assigments costs (agents x jobs)
     consumptions::Matrix{Int64} # Assigments consumptions (agents x jobs)
@@ -28,13 +25,17 @@ struct AssignmentProblem
 end
 ```
 
+The package also defines the functions `na` and `nj` returning the number of agents and jobs, respectively.
+
 Some classical GAP instances from the literature are preloaded. For example, to load GAP instance `a05100`:
 
 ```julia
 data = loadAssignmentProblem(:a05100)
 ```
 
-See the [full list](https://github.com/rafaelmartinelli/AssignmentProblems.jl/tree/main/data).
+There is a second optional parameter to set the objective function used (default `:Min` or `:Max`). This is only used to populate lb and ub fields.
+
+See the [full instance list](https://github.com/rafaelmartinelli/AssignmentProblems.jl/tree/main/data).
 
 AssignmentProblems also loads custom GAP instances (following [ORLib format](http://people.brunel.ac.uk/~mastjjb/jeb/orlib/gapinfo.html)):
 

@@ -5,10 +5,8 @@ using Test
     data = loadAssignmentProblem(:a05200)
     @test data.name == "a05200"
     @test data.capacities[3] == 671
-    @test length(data.agents) == 5
-    @test length(data.jobs) == 200
-    @test data.lb == typemin(Int64)
-    @test data.ub == typemax(Int64)
+    @test na(data) == 5
+    @test nj(data) == 200
     @test_nowarn println(data)
 end
 
@@ -18,11 +16,11 @@ end
 end
 
 @testset "LoadString" begin
-    data = loadAssignmentProblem(joinpath(pkgdir(AssignmentProblems), "test/data/a05100"))
-    @test data.name == "a05100"
-    @test data.capacities[3] == 342
-    @test length(data.agents) == 5
-    @test length(data.jobs) == 100
+    data = loadAssignmentProblem(joinpath(pkgdir(AssignmentProblems), "test/data/dummy"))
+    @test data.name == "dummy"
+    @test data.capacities[2] == 342
+    @test na(data) == 2
+    @test nj(data) == 5
     @test data.lb == typemin(Int64)
     @test data.ub == typemax(Int64)
     @test_nowarn println(data)
@@ -34,8 +32,9 @@ end
 end
 
 @testset "TestBounds" begin
-    data = loadAssignmentProblem(:c1060_5)
-    @test data.name == "c1060_5"
-    @test data.lb == 1446
-    @test data.ub == 1446
+    data = loadAssignmentProblem(:c801600, :Max)
+    @test data.name == "c801600"
+    @test data.lb == 79733
+    @test data.ub == 79740
+    @test_nowarn println(data)
 end
