@@ -1,3 +1,20 @@
+"""
+    loadAssignmentProblem(instance::Symbol, objective::Symbol = :Min)
+    loadAssignmentProblem(file_name::String, objective::Symbol = :Min)
+
+Load a GAP instance and return it as an [`AssignmentProblem`](@ref).
+
+- When `instance` is provided, the function searches for a bundled ZIP file
+  under the package `data/` directory. The symbol must match one of the
+  values defined by [`Instance`](@ref).
+- When `file_name` is provided, the file is read from disk. Both plain text
+  inputs and single-entry ZIP archives following the OR-Library layout are
+  supported.
+
+The `objective` argument controls which pre-computed bounds are attached to
+the resulting object. Use `:Min` for minimisation (default) or `:Max` for
+maximisation.
+"""
 function loadAssignmentProblem(instance::Symbol, objective::Symbol = :Min)
     file_name = joinpath(data_path, string(instance) * ".zip")
     if !isfile(file_name)

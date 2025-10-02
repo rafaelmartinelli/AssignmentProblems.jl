@@ -1,3 +1,11 @@
+"""
+    AssignmentProblems
+
+Utilities for reading benchmark instances of the Generalized Assignment
+Problem (GAP). The module exports helpers to access the bundled data set
+collection, parse custom files that follow the OR-Library GAP format, and
+inspect the resulting `AssignmentProblem` structures.
+"""
 module AssignmentProblems
 
 export AssignmentProblem, loadAssignmentProblem

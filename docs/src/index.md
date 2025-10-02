@@ -4,61 +4,37 @@ CurrentModule = AssignmentProblems
 
 # AssignmentProblems.jl
 
-AssignmentProblems reads data files in `gap` format for Generalized Assignmnent Problem (GAP) instances.
-
-## Usage
-
-The main type used by the package is `AssignmentProblem`, defined as follows:
-
-```julia
-struct AssignmentProblem
-    name::String                # Instance name
-
-    capacities::Vector{Int64}   # Agents' capacities
-    costs::Matrix{Int64}        # Assigments costs (agents x jobs)
-    consumptions::Matrix{Int64} # Assigments consumptions (agents x jobs)
-
-    lb::Int64                   # Lower bound (typemin(Int64) if not known)
-    ub::Int64                   # Upper bound (typemax(Int64) if not known)
-end
-```
-
-The package also defines the functions `na` and `nj` returning the number of agents and jobs, respectively.
-
-Some classical GAP instances from the literature are preloaded. For example, to load GAP instance `a05100`:
-
-```julia
-data = loadAssignmentProblem(:a05100)
-```
-
-There is a second optional parameter to set the objective function used (default `:Min` or `:Max`). This is only used to populate lb and ub fields.
-
-See the [full instance list](https://github.com/rafaelmartinelli/AssignmentProblems.jl/tree/main/data).
-
-AssignmentProblems also loads custom GAP instances (following [ORLib format](http://people.brunel.ac.uk/~mastjjb/jeb/orlib/gapinfo.html)):
-
-```julia
-data = loadAssignmentProblem("/path/to/your/GAP/instance.txt")
-```
+AssignmentProblems.jl is a lightweight utility for loading Generalized
+Assignment Problem (GAP) instances. It ships with the classical benchmark
+library and can parse custom files that follow the OR-Library format.
 
 ## Installation
 
-AssignmentProblems is *not* yet a registered Julia Package.
-You can install AssignmentProblems through the Julia package manager.
-Open Julia's interactive session (REPL) and type:
+AssignmentProblems is not yet registered. Install it directly from GitHub
+using Julia's package manager:
 
 ```julia
-] add https://github.com/rafaelmartinelli/AssignmentProblems.jl
+pkg> add https://github.com/rafaelmartinelli/AssignmentProblems.jl
 ```
 
-## Related links
+## Quick start
 
-- [Mutsunori Yagiura's GAP Page](http://www.al.cm.is.nagoya-u.ac.jp/~yagiura/gap/)
-- [ORLib's GAP page](http://people.brunel.ac.uk/~mastjjb/jeb/orlib/gapinfo.html)
+```julia
+julia> using AssignmentProblems
 
-```@index
+julia> problem = loadAssignmentProblem(:a05100)
+GAP Data a05100 (5 agents, 100 jobs) [-Inf, Inf]
+
+julia> (na(problem), nj(problem))
+(5, 100)
 ```
 
-```@autodocs
-Modules = [AssignmentProblems]
-```
+Supply a file path instead of a symbol to read external instances, and pass
+`:Max` as the optional second argument to work with maximisation bounds.
+
+## Next steps
+
+- Learn more about the bundled benchmarks in the [Instance catalogue](@ref
+  instance-catalogue).
+- Browse the exported types and functions in the [API reference](@ref
+  reference).
