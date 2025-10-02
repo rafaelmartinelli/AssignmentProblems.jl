@@ -1,3 +1,10 @@
+"""
+    Instance
+
+Enumeration of the Generalized Assignment Problem instances bundled with the
+package. The values correspond to ZIP files under the `data/` directory and
+can be iterated with `instances(Instance)`.
+"""
 @enum Instance begin
     a05100
     a05200
@@ -118,6 +125,13 @@
     e801600
 end
 
+"""
+    Objective
+
+Enumeration of the objective directions supported by
+[`loadAssignmentProblem`](@ref). Use `:Min` for minimisation or `:Max` for
+maximisation.
+"""
 @enum Objective begin
     Min
     Max

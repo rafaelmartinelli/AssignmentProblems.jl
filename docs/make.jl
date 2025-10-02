@@ -15,9 +15,13 @@ makedocs(;
     ),
     pages=[
         "Home" => "index.md",
+        "Instance catalogue" => "instances.md",
+        "API reference" => "reference.md",
     ],
 )
 
 deploydocs(;
     repo="github.com/rafaelmartinelli/AssignmentProblems.jl",
+    devbranch="main",
+    push_preview=true,
 )
